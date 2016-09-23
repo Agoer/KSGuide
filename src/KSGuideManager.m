@@ -154,12 +154,12 @@ static NSString *identifier = @"Cell";
     KSGuideViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     NSString *path = [self.images objectAtIndex:indexPath.row];
-    UIImage *img = [UIImage imageWithContentsOfFile:path];
+    UIImage *img = [UIImage imageNamed:path];
     CGSize size = [self adapterSizeImageSize:img.size compareSize:kScreenBounds.size];
     
     //自适应图片位置,图片可以是任意尺寸,会自动缩放.
     cell.imageView.frame = CGRectMake(0, 0, size.width, size.height);
-    cell.imageView.image = [UIImage imageWithContentsOfFile:path];
+    cell.imageView.image = img;
     cell.imageView.center = CGPointMake(kScreenBounds.size.width / 2, kScreenBounds.size.height / 2);
 
     if (indexPath.row == self.images.count - 1) {
